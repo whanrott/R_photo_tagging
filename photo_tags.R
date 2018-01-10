@@ -36,8 +36,8 @@ images_summary$LastKeywordXMP   <- sub(pattern = "Person: ",x = images_summary$L
 
 # fix starting date
 images_summary$DateTimeOriginal <- as.Date(images_summary$DateTimeOriginal) #,format = "%Y:%m:%d %H:%M:%S")
-images_summary <- images_summary[images_summary$DateTimeOriginal >= "2003-01-01",]
+images_summary <- images_summary[images_summary$DateTimeOriginal >= "2008-01-01",]
 
 # plot graph
-p <- ggplot(images_summary, aes(DateTimeOriginal,fqcy, colour = LastKeywordXMP)) + geom_line() #+ facet_wrap(~LastKeywordXMP, ncol = 1)
+p <- ggplot(images_summary, aes(DateTimeOriginal,log(fqcy), colour = LastKeywordXMP)) + geom_line() #+ facet_wrap(~LastKeywordXMP, ncol = 1)
 print(p + labs(x = "Date Photograph Taken", y = "Number of Photographs Taken") + scale_colour_brewer(palette = "Dark2"))
